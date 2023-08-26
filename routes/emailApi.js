@@ -32,12 +32,11 @@ router.post('/submit-query', (req, res) => {
     if (error) {
       console.log('Error sending email:', error);
       req.flash('error', 'error sending email!');
-      return res.redirect('back');
+      return res.json({ success: false, error: 'Error sending email' });
     } else {
       console.log('Email sent:', info.response);
       req.flash('success', 'Query sent!');
       res.json({ success: true, receivedData: { name, email, message } });
-    return res.redirect('back');
     }
   });
 });
