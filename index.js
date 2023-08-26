@@ -10,6 +10,7 @@ require('dotenv').config();
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(express.json()); // Instead of bodyParser.json()
 
 // Use cors middleware with specific origin(s)
 app.use(cors({
