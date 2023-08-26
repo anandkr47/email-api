@@ -5,6 +5,7 @@ const nodemailer = require('nodemailer');
 // Define your route handler for /submit-query
 router.post('/submit-query', (req, res) => {
   const { name, email, message } = req.body;
+  console.log("Received Body:", req.body);
   console.log("Received Name:", name);
   console.log("Received Email:", email);
   console.log("Received Message:", message);

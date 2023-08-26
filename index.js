@@ -10,6 +10,8 @@ require('dotenv').config();
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
 app.use(flash());
 
 const allowedOrigins = ['https://tetratrion.netlify.app'];
