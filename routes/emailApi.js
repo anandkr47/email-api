@@ -23,11 +23,19 @@ router.post('/submit-query', (req, res) => {
   // Compose the email message
   const mailOptions = {
     from: `<${email}>`,
-    to: process.env.EMAIL_USER, // Update with your email address
-    subject: 'Query from Placement Cell',
-    text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
+    to: process.env.EMAIL_USER,
+    subject: 'Contact From Tetratrion',
+    html: `
+      <h2>Contact Details</h2>
+      <p><strong>Name:</strong> ${name}</p>
+      <p><strong>Email:</strong> ${email}</p>
+      <p><strong>Message:</strong></p>
+      <p>${message}</p>
+      <hr>
+      <p>This email was sent from the contact form on your website.</p>
+    `,
   };
-
+  
   // Send the email
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
