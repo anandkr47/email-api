@@ -36,6 +36,7 @@ router.post('/submit-query', (req, res) => {
     } else {
       console.log('Email sent:', info.response);
       req.flash('success', 'Query sent!');
+      res.json({ success: true, receivedData: { name, email, message } });
     return res.redirect('back');
     }
   });
