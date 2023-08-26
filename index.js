@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const flash = require('connect-flash');
+const cors = require('cors');
 const app = express();
 const port = 3000;
 
@@ -16,6 +17,11 @@ const apiRouter = require('./routes/emailApi'); // Update the path if necessary
 
 // Use your route
 app.use('/', apiRouter);
+
+const allowedOrigins = ['https://tetratrion.netlify.app'];
+app.use(cors({
+  origin: allowedOrigins,
+}));
 
 // Set up a simple home page route
 app.get('/', (req, res) => {
