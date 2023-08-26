@@ -5,23 +5,23 @@ const cors = require('cors');
 const app = express();
 const port = 3000;
 
+// Load environment variables from .env file
+require('dotenv').config();
+
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(flash());
 
-// Load environment variables from .env file
-require('dotenv').config();
+const allowedOrigins = ['https://tetratrion.netlify.app'];
+app.use(cors({
+  origin: allowedOrigins,
+}));
 
 // Load your route
 const apiRouter = require('./routes/emailApi'); // Update the path if necessary
 
 // Use your route
 app.use('/', apiRouter);
-
-const allowedOrigins = ['https://tetratrion.netlify.app'];
-app.use(cors({
-  origin: allowedOrigins,
-}));
 
 // Set up a simple home page route
 app.get('/', (req, res) => {
