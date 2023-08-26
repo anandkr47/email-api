@@ -1,7 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const flash = require('connect-flash');
-const cors = require('cors');
+const cors = require('cors'); // Import the cors middleware
 const app = express();
 const port = 3000;
 
@@ -12,11 +11,11 @@ require('dotenv').config();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.use(flash());
-
-const allowedOrigins = ['https://tetratrion.netlify.app'];
+// Use cors middleware with specific origin(s)
 app.use(cors({
-  origin: allowedOrigins,
+  origin: 'https://tetratrion.netlify.app', // Replace with your frontend's URL
+  methods: ['GET', 'POST'], // Specify allowed HTTP methods
+  allowedHeaders: ['Content-Type'], // Specify allowed headers
 }));
 
 // Load your route
