@@ -12,10 +12,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.json()); // Instead of bodyParser.json()
 
+const allowedOrigins = ['https://tetratrion.com', 'https://www.tetratrion.com','https://tetratrion.netlify.app'];
 // Use cors middleware with specific origin(s)
 app.use(cors({
-  origin: 'https://tetratrion.netlify.app', // Replace with your frontend's URL
-  methods: ['GET', 'POST'], // Specify allowed HTTP methods
+  origin: allowedOrigins,
+    methods: ['GET', 'POST'], // Specify allowed HTTP methods
   allowedHeaders: ['Content-Type'], // Specify allowed headers
 }));
 
